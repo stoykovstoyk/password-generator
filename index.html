@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Random Password Generator</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #1f4037, #99f2c8);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+    }
+
+    .card {
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+      animation: fadeInUp 1s ease-in-out;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .password-display {
+      font-size: 1.2em;
+      padding: 10px;
+      background: #333;
+      color: #fff;
+      border-radius: 8px;
+      word-break: break-all;
+    }
+
+    .form-switch {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .copy-btn {
+      margin-top: 10px;
+    }
+
+    .form-check-input:checked {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+
+    .btn {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container d-flex align-items-center justify-content-center">
+    <div class="card p-4 col-md-8 col-lg-6 col-xl-5">
+      <h3 class="text-center mb-4">🔐 Password Generator</h3>
+      <form id="passwordForm">
+        <div class="mb-3">
+          <label for="length" class="form-label">Password Length</label>
+          <input type="number" id="length" class="form-control" value="16" min="4" max="200"/>
+        </div>
+
+        <div class="mb-3">
+          <label for="specialChars" class="form-label">Allowed Special Characters</label>
+          <input type="text" id="specialChars" class="form-control" value="~!@#$%^&*()-_+=[]{}`;:?"/>
+        </div>
+
+        <div class="form-check form-switch mb-2">
+          <input class="form-check-input" type="checkbox" id="lower_case" checked>
+          <label class="form-check-label" for="lower_case">Include Lowercase</label>
+        </div>
+        <div class="form-check form-switch mb-2">
+          <input class="form-check-input" type="checkbox" id="upper_case" checked>
+          <label class="form-check-label" for="upper_case">Include Uppercase</label>
+        </div>
+        <div class="mb-3">
+          <label for="digits" class="form-label">Digits Mode</label>
+          <select id="digits" class="form-select">
+            <option value="0">Off</option>
+            <option value="1" selected>On</option>
+            <option value="2">Hex</option>
+          </select>
+        </div>
+        <div class="form-check form-switch mb-2">
+          <input class="form-check-input" type="checkbox" id="special" checked>
+          <label class="form-check-label" for="special">Include Special Characters</label>
+        </div>
+        <div class="form-check form-switch mb-4">
+          <input class="form-check-input" type="checkbox" id="unique" checked>
+          <label class="form-check-label" for="unique">Use Unique Characters Only</label>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Generate Password</button>
+      </form>
+
+      <div class="mt-4">
+        <label class="form-label">Generated Password:</label>
+        <div class="position-relative">
+          <div class="password-display pe-5" id="passwordField">select options and Generate</div>
+          <button class="btn btn-sm btn-warning position-absolute top-0 end-0 m-2" id="copyBtn">Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/password.js"></script>
+
+  <footer class="text-center w-100 mt-5" style="position: absolute; bottom: 10px; color: rgba(255,255,255,0.8); font-size: 0.9em;">
+    Created by Stoyko Stoykov
+  </footer>
+</body>
+
+</html>
